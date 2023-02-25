@@ -1,13 +1,52 @@
-<app-search (coord)="process($event)"></app-search>
-<!-- 
-<app-city
-  [lat]="coordinates.lat"
-  [lon]="coordinates.lon"
-  [units]="units"
-></app-city> -->
+<div class="flex flex-row justify-around p-8">
+  <div>
+    <div class="flex flex-col justify-center fixed p-8 top-[40%] gap-4">
+      <section class="flex flex-row gap-2">
+        <a
+          href="https://www.linkedin.com/in/leandro-gomez-22aa0b1b5/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hover:shadow-xl hover:shadow-indigo-500"
+        >
+          <i
+            class="fa-brands fa-linkedin-in fa-xl"
+            style="color: rgb(55 65 81/1)"
+          ></i>
+        </a>
+        <a
+          href="https://github.com/Legt14"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hover:shadow-xl hover:shadow-indigo-500"
+          
+        >
+          <i
+            class="fa-brands fa-github fa-xl"
+            style="color: rgba(55 65 81/1)"
+          ></i>
+        </a>
 
-<app-weathers
-  [lat]="coordinates.lat"
-  [lon]="coordinates.lon"
-></app-weathers>
+        <a
+          href="https://legt14.github.io/portfolio.github.io/home"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hover:shadow-xl hover:shadow-indigo-500"
 
+        >
+          <i
+            class="fa-solid fa-globe fa-xl"
+            style="color: rgba(55 65 81/1)"
+          ></i>
+        </a>
+      </section>
+      <app-search (coord)="process($event)"></app-search>
+      <app-city [city]="city"></app-city>
+    </div>
+  </div>
+
+  <app-weathers
+    [lat]="coordinates.lat"
+    [lon]="coordinates.lon"
+    (city)="getCItyName($event)"
+  ></app-weathers>
+</div>

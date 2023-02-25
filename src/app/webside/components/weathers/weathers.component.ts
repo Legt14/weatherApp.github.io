@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { WeatherModel } from 'src/app/models/weather.model';
 import { ConnectionService } from 'src/app/services/connection.service';
@@ -13,6 +13,7 @@ export class WeathersComponent implements OnChanges{
   @Input() lon: number = 0;
   units: boolean | null = null;
 
+  @Output() city = new EventEmitter()
 
   weatherTimeLaps: WeatherModel = {
     cod: '',
@@ -50,6 +51,7 @@ export class WeathersComponent implements OnChanges{
       .pipe(
         map((data: any) => {
           this.weatherTimeLaps = data;
+          this.city.emit(data.city)
           console.log('here', this.weatherTimeLaps);
         })
       )

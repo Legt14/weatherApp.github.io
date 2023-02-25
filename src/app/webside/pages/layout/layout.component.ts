@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CityBase } from 'src/app/models/city.model';
-import { List } from 'src/app/models/weather.model';
+import { List, WeatherModel, City } from 'src/app/models/weather.model';
 import { ConnectionService } from 'src/app/services/connection.service';
 
 @Component({
@@ -15,11 +15,21 @@ export class LayoutComponent {
     lat: 0,
     name: '',
   };
-  units = false;
+  city: City = {
+    id: 0,
+    name: '',
+    coord: {
+      lat: 0,
+      lon: 0,
+    },
+    country: '',
+    population: 0,
+    timezone: 0,
+    sunrise: 0,
+    sunset: 0,
+  };
 
-  constructor(private weather: ConnectionService) {}
-
-  
+  constructor() {}
 
   process(coords: CityBase) {
     let { lat, lon, name }: { lat: number; name: string; lon: number } = coords;
@@ -28,6 +38,21 @@ export class LayoutComponent {
       lat: lat,
       lon: lon,
       name: name,
+    };
+  }
+  getCItyName(data: City) {
+    this.city = {
+      id: data.id,
+      name: data.name,
+      coord: {
+        lat: data.coord.lat,
+        lon: data.coord.lon,
+      },
+      country: data.country,
+      population: data.population,
+      timezone: data.timezone,
+      sunrise: data.sunrise,
+      sunset: data.sunset,
     };
   }
 }
