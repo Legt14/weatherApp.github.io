@@ -1,0 +1,8 @@
+<h1>{{ weatherTimeLaps.city.name }}</h1><span>{{ weatherTimeLaps.city.country }}</span>
+
+<app-weather
+  [units]="units"
+  *ngFor="let record of weatherTimeLaps.list"
+  [weatherObject]="record"
+>
+</app-weather>
