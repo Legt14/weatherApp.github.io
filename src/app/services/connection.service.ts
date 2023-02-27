@@ -6,8 +6,8 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 })
 export class ConnectionService {
   private key = `7fc7d283b23828ac1e916222d6374c9b`;
-  private urlApiGeo = `http://api.openweathermap.org/geo/1.0/direct`;
-  private forecastWeather = 'http://api.openweathermap.org/data/2.5/forecast';
+  private urlApiGeo = `https://api.openweathermap.org/geo/1.0/direct`;
+  private forecastWeather = 'https://api.openweathermap.org/data/2.5/forecast';
 
   constructor(private http: HttpClient) {}
 
@@ -25,6 +25,7 @@ export class ConnectionService {
     param = param.set('lon', lon);
     param = param.set('appid', this.key);
     param = param.set('units', 'metric')
+    param = param.set('mode', 'json')
 
     const requestOptions = { params: param };
 
